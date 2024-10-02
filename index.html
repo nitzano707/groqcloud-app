@@ -1,1 +1,24 @@
+<!DOCTYPE html>
+<html lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GroqCloud App</title>
+</head>
+<body>
+    <h1>שלח טקסט ל-GroqCloud</h1>
+    <textarea id="userInput" rows="4" cols="50" placeholder="הכנס טקסט כאן"></textarea>
+    <br><br>
+    <button onclick="sendText()">שלח</button>
+    <p id="response"></p>
+
+    <script>
+        function sendText() {
+            const text = document.getElementById('userInput').value;
+            document.getElementById('response').innerText = "הטקסט ששלחת: " + text;
+            // כאן נשלב בהמשך את הקוד שיתקשר עם GroqCloud
+        }
+    </script>
+</body>
+</html>
 
