@@ -13,12 +13,30 @@
     <p id="response"></p>
 
     <script>
-        function sendText() {
-            const text = document.getElementById('userInput').value;
-            document.getElementById('response').innerText = "הטקסט ששלחת: " + text;
-            // כאן נשלב בהמשך את הקוד שיתקשר עם GroqCloud
+    async function sendText() {
+        const text = document.getElementById('userInput').value;
+        
+        const apiKey = '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';
+        const url = 'https://api.groq.com/openai/v1';  // עדכן את ה-URL לפי ה-endpoint של GroqCloud
+
+        try {
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${apiKey}`
+                },
+                body: JSON.stringify({ input: text })
+            });
+
+            const result = await response.json();
+            document.getElementById('response').innerText = result.output;
+        } catch (error) {
+            console.error('Error:', error);
+            document.getElementById('response').innerText = 'שגיאה בהתקשרות ל-API';
         }
-    </script>
+    }
+</script>
 </body>
 </html>
 
